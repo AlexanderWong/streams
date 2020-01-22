@@ -13,12 +13,12 @@ class StreamCreate extends Component {
   };
 
   renderInput = ({ label, input, meta }) => {
+    const className = `field ${meta.error && meta.touched ? "error" : ""}`;
     return (
-      <div className="field">
+      <div className={className}>
         <label>{label}</label>
 
         <input {...input} autoComplete="off" />
-        <div>{meta.error}</div>
         {this.renderError(meta)}
       </div>
     );
@@ -33,7 +33,7 @@ class StreamCreate extends Component {
       // use handleSubmit because I am using redux form.
       <form
         onSubmit={this.props.handleSubmit(this.onSubmit)}
-        className="ui form"
+        className="ui form error"
       >
         <Field name="title" component={this.renderInput} label="Enter Title" />
         <Field
