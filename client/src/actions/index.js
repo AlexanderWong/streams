@@ -49,11 +49,12 @@ export const createStream = formValues => async (dispatch, getState) => {
   history.push("/");
 };
 
-//EDIT REQUEST
+//EDIT REQUEST [PATCH request updates SOME of the properties of a record, whereas PUT will change ALL of the properties]
 export const editStream = (id, formValues) => async dispatch => {
-  const response = await streams.put(`/streams/${id}`, formValues);
+  const response = await streams.patch(`/streams/${id}`, formValues);
 
   dispatch({ type: EDIT_STREAM, payload: response.data });
+  history.push("/");
 };
 
 //DELETE REQUEST (no response needed here)
